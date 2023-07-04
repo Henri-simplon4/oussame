@@ -43,43 +43,46 @@ public function liste()
 
 public function edit($id)
 {
-    $eleve = Eleve::find($id);
+    // Récupérer l'élève à modifier
+    $eleve = Eleve::findOrFail($id);
+
     return view('layouts.edit', compact('eleve'));
 }
 
+// Méthode pour traiter la mise à jour de l'élève
 public function update(Request $request, $id)
 {
-    $request->validate([
+    // Validation des données du formulaire
+    $validatedData = $request->validate([
         'nom' => 'required',
         'prenom' => 'required',
-        'email' => 'email|required',
-        'numero' => 'required|min:8',
+        'email' => 'required|email|unique',
+        'numero' => 'required',
     ]);
 
-    $eleve = Eleve::find($id);
-    $eleve->nom = $request->input('nom');
-    $eleve->prenom = $request->input('prenom');
-    $eleve->email = $request->input('email');
-    $eleve->numero = $request->input('numero');
+    // Recherche de l'élève à modifier
+    $eleve = Eleve::findOrFail($id);
+
+    // Mise à jour des attributs de l'élève avec les données du formulaire
+    $eleve->nom = $validatedData['nom'];
+    $eleve->prenom = $validatedData['prenom'];
+    $eleve->email = $validatedData['email'];
+    $eleve->numero = $validatedData['numero'];
+
+    // Sauvegarde des modifications dans la base de données
     $eleve->save();
 
-    return redirect()->route('eleve.liste')->with('success', 'Élève mis à jour avec succès');
+    // Redirection vers une page appropriée, par exemple la liste des élèves
+    return redirect()->route('eleves.liste')->with('success', 'Élève modifié avec succès.');
 }
 
-public function destroy($id)
+
+public function delete($id)
 {
-    $eleve = Eleve::findOrFail($id);
+    $eleve = Eleve::find($id);
     $eleve->delete();
 
-    return redirect()->back()->with('success', 'Élève supprimé avec succès');
+    return redirect()->route('eleves.liste')->with('success', 'Élève supprimé avec succès');
 }
-
-
-// public function show($id)
-// {
-//     $eleve = Eleve::find($id);
-//     return view('layouts.show', compact('eleve'));
-// }
-
 
 }
