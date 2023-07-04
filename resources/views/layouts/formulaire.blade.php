@@ -50,7 +50,7 @@
               <button type="submit" name="submit">Enregistrer</button>
             </div>
             <div class="col">
-              <button class="lis"><a href="{{ route('eleves.create') }}">liste</a></button>
+              <button class="lis"><a href="{{ route('eleves.liste') }}">liste</a></button>
             </div>
           </div>
         </fieldset>

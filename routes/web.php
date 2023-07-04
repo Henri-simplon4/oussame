@@ -17,13 +17,15 @@ use App\Http\Controllers\EleveController;
 Route::get('/', function () {
     return view('welcome');
 });
-
+  
 route::get('/formulaire', [henriController::class, 'method1']);
- 
-// Route::post('/post/create', [createController::class, 'create']);
-// Route::get('/post/liste', [createController::class, 'liste']);
 
-Route::post('/eleves/create', [EleveController::class, 'create'])->name('eleves.create');
-Route::get('/eleves/liste', [EleveController::class, 'liste'])->name('eleves.liste');
+Route::post('/layouts/create', [EleveController::class, 'create'])->name('eleves.create');
+Route::get('/layouts/liste', [EleveController::class, 'liste'])->name('eleves.liste');
+Route::delete('/layouts/{eleve}', [EleveController::class, 'destroy'])->name('eleve.delete');
+
+Route::put('/layouts/{eleve}', [EleveController::class, 'update'])->name('eleve.update');
+Route::get('/layouts/edit', [EleveController::class, 'edit'])->name('eleve.edit');
+// Route::get('/layouts/{eleve}', [EleveController::class, 'show'])->name('eleve.show');
 
 
