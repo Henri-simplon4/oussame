@@ -26,9 +26,9 @@
     <input type="text" name="nom" value="{{ $eleve->nom }}" required>
     <input type="text" name="prenom" value="{{ $eleve->prenom }}" required>
     <input type="email" name="email" value="{{ $eleve->email }}" required>
-    <input type="text" name="numero" value="{{ $eleve->numero }}" required>
+    <input type="int" name="numero" value="{{ $eleve->numero }}" required>
 
-    <button type="submit">Modifier</button>
+    <button type="submit">Modifier</button> 
 </form>
  
   <script src="script/script.js"></script>

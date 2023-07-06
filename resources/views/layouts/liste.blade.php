@@ -11,7 +11,7 @@
 </head>
 <body>
   <h1>Liste des élèves</h1>
-  <a class="btn btn-primary" href="{{ route('eleves.create') }}">Ajouter un élève</a>
+  
 
   <table>
     <thead>
@@ -31,12 +31,12 @@
         <td>{{ $eleve->email }}</td>
         <td>{{ $eleve->numero }}</td>
         <td class="actions">
-          <a class="btn btn-danger" href="{{ route('eleve.delete', $eleve->id) }}">supprimer</a>
+          <a class="btn btn-danger" onclick='return confirm("Voulez-vous vraiment supprimer cet étudiant")' href="{{ route('eleve.delete', $eleve->id) }}">supprimer</a>
           <a class="btn btn-info" href="{{ route('eleves.edit', $eleve->id) }}">modifier</a></td>
       </tr>
       @endforeach
     </tbody>
   </table>
-  
+  <a class="btn btn-primary" href="{{ route('eleves.create') }}">Ajouter un élève</a>
 </body>
 </html>

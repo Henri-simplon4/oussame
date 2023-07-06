@@ -28,5 +28,3 @@ Route::get('/eleves/{id}delete', [EleveController::class, 'delete'])->name('elev
 Route::put('/eleves/{id}', [EleveController::class, 'update'])->name('eleves.update');
 Route::get('/layouts/{id}edit', [EleveController::class, 'edit'])->name('eleves.edit');
 // Route::get('/layouts/{eleve}', [EleveController::class, 'show'])->name('eleve.show');
-
-

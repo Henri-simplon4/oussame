@@ -29,16 +29,16 @@ class EleveController extends Controller
     return redirect()->back()->with('success', 'Élève enregistré avec succès');
 }
 
-public function formulaire()
-{
-    $eleves = Eleve::all();
-    return view('eleves.liste', compact('eleves'));
-}
+// public function formulaire()
+// {
+//     $eleves = Eleve::all();
+//     return view('eleves.liste', compact('eleves'));
+// }
 
 public function liste()
 {
     $eleves = Eleve::all();
-    return View('layouts.liste', compact('eleves'));
+    return View('layouts.liste', compact('eleves')); 
 }
 
 public function edit($id)
@@ -56,7 +56,7 @@ public function update(Request $request, $id)
     $validatedData = $request->validate([
         'nom' => 'required',
         'prenom' => 'required',
-        'email' => 'required|email|unique',
+        'email' => 'required|email',
         'numero' => 'required',
     ]);
 
